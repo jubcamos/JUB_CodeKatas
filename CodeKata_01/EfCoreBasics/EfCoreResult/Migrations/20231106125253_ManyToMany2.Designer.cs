@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfCoreResult.Migrations
 {
     [DbContext(typeof(GameLibraryContext))]
-    [Migration("20231106112501_NewTypes2")]
-    partial class NewTypes2
+    [Migration("20231106125253_ManyToMany2")]
+    partial class ManyToMany2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,41 @@ namespace EfCoreResult.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("DeveloperStudioPublisher", b =>
+                {
+                    b.Property<int>("DeveloperStudioId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PublishersId")
+                        .HasColumnType("int");
+
+                    b.HasKey("DeveloperStudioId", "PublishersId");
+
+                    b.HasIndex("PublishersId");
+
+                    b.ToTable("DeveloperStudioPublisher");
+                });
+
+            modelBuilder.Entity("EfCoreResult.Models.Publisher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<double>("Budged")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Publishers");
+                });
 
             modelBuilder.Entity("EfCoreResults.Models.DeveloperStudio", b =>
                 {
@@ -80,6 +115,21 @@ namespace EfCoreResult.Migrations
                     b.HasIndex("DeveloperStudioId");
 
                     b.ToTable("Games");
+                });
+
+            modelBuilder.Entity("DeveloperStudioPublisher", b =>
+                {
+                    b.HasOne("EfCoreResults.Models.DeveloperStudio", null)
+                        .WithMany()
+                        .HasForeignKey("DeveloperStudioId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfCoreResult.Models.Publisher", null)
+                        .WithMany()
+                        .HasForeignKey("PublishersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EfCoreResults.Models.Game", b =>

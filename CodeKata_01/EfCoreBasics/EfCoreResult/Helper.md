@@ -29,6 +29,10 @@ oder
 
 > dotnet ef database update
 
+Rollback:
+
+> dotnet ef database update <previous-migration-name>
+
 ### 1.5. Daten hinzufügen
 
 Context in der Startmethode instazieren, Methode auskommentieren, Context-Methode AddRange nutzten und am ende eine SaveChanges aufrufen
@@ -61,14 +65,7 @@ Hier kann selbst ausgesucht werden welche der zwei Methoden man nutzt. Es werden
 
 #### 2.1. Relationen
 
-Wir fügen eine neue Entity-Klasse namens **Publisher** hinzu. 
-Füge die neue Klasse so hinzu das ein DeveloperStudio mehrere Publisher hat und ein Publisher mehrere DevelopStudios (N-to-N-Beziehung).
-
-Die Publisher-Klasse besitzt folgende Merkmale:
-* Id -> string
-* Name -> string
-* Customer -> Liste aus DeveloperStudios
-* Costs -> double
+Gibt zwei arten ;) 
 
 
 #### 2.2. Entitätseigenschaften

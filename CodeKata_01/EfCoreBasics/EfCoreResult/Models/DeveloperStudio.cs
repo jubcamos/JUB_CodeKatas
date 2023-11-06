@@ -22,6 +22,8 @@ namespace EfCoreResults.Models
         [Column(TypeName = "varchar(max)")]
         public string? Country { get; set; }
 
-        public List<Partnership> Partnerships { get; set; }
+        public List<Publisher> Publishers { get; set; }
+
+        //public List<DeveloperStudioPublisher> DeveloperStudioPublisher {get; set;}
     }
 }

@@ -22,19 +22,19 @@ namespace EfCoreResult.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("EfCoreResult.Models.Partnership", b =>
+            modelBuilder.Entity("DeveloperStudioPublisher", b =>
                 {
-                    b.Property<int?>("PublisherId")
+                    b.Property<int>("DeveloperStudioId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("DeveloperId")
+                    b.Property<int>("PublishersId")
                         .HasColumnType("int");
 
-                    b.HasKey("PublisherId", "DeveloperId");
+                    b.HasKey("DeveloperStudioId", "PublishersId");
 
-                    b.HasIndex("DeveloperId");
+                    b.HasIndex("PublishersId");
 
-                    b.ToTable("Partnerships");
+                    b.ToTable("DeveloperStudioPublisher");
                 });
 
             modelBuilder.Entity("EfCoreResult.Models.Publisher", b =>
@@ -114,21 +114,19 @@ namespace EfCoreResult.Migrations
                     b.ToTable("Games");
                 });
 
-            modelBuilder.Entity("EfCoreResult.Models.Partnership", b =>
+            modelBuilder.Entity("DeveloperStudioPublisher", b =>
                 {
-                    b.HasOne("EfCoreResults.Models.DeveloperStudio", "DeveloperStudio")
-                        .WithMany("Partnerships")
-                        .HasForeignKey("DeveloperId")
+                    b.HasOne("EfCoreResults.Models.DeveloperStudio", null)
+                        .WithMany()
+                        .HasForeignKey("DeveloperStudioId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfCoreResult.Models.Publisher", "Publisher")
-                        .WithMany("Partnership")
-                        .HasForeignKey("PublisherId");
-
-                    b.Navigation("DeveloperStudio");
-
-                    b.Navigation("Publisher");
+                    b.HasOne("EfCoreResult.Models.Publisher", null)
+                        .WithMany()
+                        .HasForeignKey("PublishersId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("EfCoreResults.Models.Game", b =>
@@ -142,16 +140,9 @@ namespace EfCoreResult.Migrations
                     b.Navigation("developer");
                 });
 
-            modelBuilder.Entity("EfCoreResult.Models.Publisher", b =>
-                {
-                    b.Navigation("Partnership");
-                });
-
             modelBuilder.Entity("EfCoreResults.Models.DeveloperStudio", b =>
                 {
                     b.Navigation("DevelopedGames");
-
-                    b.Navigation("Partnerships");
                 });
 #pragma warning restore 612, 618
         }

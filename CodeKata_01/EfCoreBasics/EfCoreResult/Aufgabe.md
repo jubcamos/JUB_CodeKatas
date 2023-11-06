@@ -95,6 +95,8 @@ Passe folgende Merkmale mit den Entitätseigenschaften an.
 
 #### 2.2. Relationen
 
+One-To-One, Many-To-Many, One-To-Many
+
 Wir fügen eine neue Entity-Klasse namens **Publisher** hinzu. 
 Füge die neue Klasse so hinzu das ein DeveloperStudio mehrere Publisher hat und ein Publisher mehrere DevelopStudios (N-to-N-Beziehung).
 

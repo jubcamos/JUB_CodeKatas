@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace EfCoreResult.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialGameLibraryDB : Migration
+    public partial class ManyToMany1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,11 +17,27 @@ namespace EfCoreResult.Migrations
                 {
                     DeveloperStudioId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "varchar(100)", nullable: true),
+                    City = table.Column<string>(type: "varchar(max)", nullable: true),
+                    Country = table.Column<string>(type: "varchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_DeveloperStudios", x => x.DeveloperStudioId);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Publishers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Budged = table.Column<double>(type: "float", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Publishers", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -30,12 +46,12 @@ namespace EfCoreResult.Migrations
                 {
                     GameId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "varchar(100)", nullable: false),
+                    Description = table.Column<string>(type: "varchar(max)", nullable: true),
                     DeveloperStudioId = table.Column<int>(type: "int", nullable: false),
                     RealeaseDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Genre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false)
+                    Genre = table.Column<string>(type: "varchar(20)", nullable: false),
+                    Price = table.Column<decimal>(type: "decimal(6,2)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -59,6 +75,9 @@ namespace EfCoreResult.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Games");
+
+            migrationBuilder.DropTable(
+                name: "Publishers");
 
             migrationBuilder.DropTable(
                 name: "DeveloperStudios");

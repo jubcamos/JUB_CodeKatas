@@ -13,6 +13,8 @@ namespace EfCoreResult.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public double Budged { get; set; }
-        public List<Partnership> Partnership {  get; set; }
+        public List<DeveloperStudio> DeveloperStudio { get; set; }
+
+        //public List<DeveloperStudioPublisher> DeveloperStudioPublisher {get; set;}
     }
 }
