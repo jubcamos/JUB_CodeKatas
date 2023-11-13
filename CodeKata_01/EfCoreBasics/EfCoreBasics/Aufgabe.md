@@ -57,11 +57,6 @@ Füger der Klasse **Students** folgende Merkmale hinzu und update die Datenbank.
 * Street -> String
 * HouseNumber -> int
 
-### 1.7. Daten hinzufügen
-
-Erweitere die Start Methode so, das die Daten die hier erzeugt werden auf die Datenbank geschrieben werden. Sobald du das hast, führe die Anwendung aus.
-Überprüfe das Ergebnis in deiner Datenbank. Sind die Daten erfolgreich reingeschrieben worden?
-
 
 ## 2. Configuration der Datenbanktabellen
 Es gibt hier zwei Arten die Entitätseigenschaften sowie Relationen anzupassen.
@@ -139,7 +134,13 @@ Lege die Klassen so an, das hierzu keine neue Tabelle angelegt wird sondern die 
 * Tutor
 	* LearnGroup -> string
 
-### 2.5. Simple Querries
+### 2.5. Daten hinzufügen
+
+Erweitere die Start Methode so, das die Daten die hier erzeugt werden auf die Datenbank geschrieben werden. Sobald du das hast, führe die Anwendung aus.
+Überprüfe das Ergebnis in deiner Datenbank. Sind die Daten erfolgreich reingeschrieben worden?
+
+
+### 2.6. Simple Querries
 
 Holl alle Schüler aus der Klasse 7b.
 
