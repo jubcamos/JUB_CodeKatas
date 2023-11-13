@@ -29,7 +29,7 @@ Erstelle die folgende Seperate C# Entity-Klassen:
 		
 Diese beiden Klassen sollen eine 1 zu N Relation zu einander haben. 
 
-"Eine Classroom hat mehrere Studenten und mehrere Studenten haben ein Classroom" 
+"Eine Classroom hat mehrere Studenten und ein Student ist in einem Classroom" 
 
 ### 1.2. Erstellen der Context-Klasse
 
