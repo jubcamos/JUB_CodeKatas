@@ -1,139 +1,81 @@
-﻿using EfCoreResults.Data;
-using EfCoreResults.Models;
+﻿using EfCoreResult.Data;
+using EfCoreResult.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations.Operations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace EfCoreResults
 {
-    //TODO: Fake Daten für Adressen und Publisher hinzufügen. Wie mache ich das es stufenweise funktioniert?
     public class Start
     {
 
         public static void Main(string[] args)
         {
-            GameLibraryContext context = new GameLibraryContext();
+            SchoolContext context = new SchoolContext();
+
+            //createFakeData(context);
 
             //List<DeveloperStudio> developers = createFakeData();
 
             //context.DeveloperStudios.AddRange(developers);
 
-            //context.SaveChanges();
+            //List<Student> students = context.Students.Where(s => s.Classyear == "7b").ToList();
 
-            var developer = context.DeveloperStudios.Where(d => d.Name == "FromSoftware").FirstOrDefault();
+            //foreach (Student student in students)
+            //{
+            //    Console.WriteLine(student.Name);
+            //}
 
-            var games = context.Games.Where(d => d.Genre == "OpenWorld");
+            //List<Teacher> teachers = context.Teachers.ToList();
 
-            foreach ( var game in games )
-            {
-                game.Price *= 0.95;
-            }
+            //foreach (Teacher teacher in teachers)
+            //{
+            //    teacher.Salary *= 1.05;
+            //}
 
-            var developers = context.DeveloperStudios.Include(d => d.DevelopedGames.Where(g => g.Genre == "OpenWorld")).Select(n => n.Name).ToList();
+            //Course course = new Course { Subject = "Retortik", Duration = 180 };
 
-            foreach ( var Name in developers ) { 
-                Console.WriteLine(Name);
-            }
+            //List<Student> students1 = context.Students.Where(s => s.Name.StartsWith("J")).ToList();
+
+            //foreach (Student student in students1)
+            //{
+            //    student.Courses.Add(course);
+            //}
 
             context.SaveChanges();
+
         }
 
-        static List<DeveloperStudio> createFakeData()
+        static void createFakeData(SchoolContext db)
         {
+            //Teacher t1 = new Professor { Name = "David", Lastname = "Müller", Age = 37, Salary = 60.122, Titel = "Prof" };
+            //Teacher t2 = new Tutor { Name = "Lisa", Lastname = "Lotte", Age = 46, Salary = 79.000,  LearnGroup = "C#" };
 
-            var developers = new List<DeveloperStudio>
-            {
-                new DeveloperStudio
-                {
-                    Name = "FromSoftware",
-                    DevelopedGames = new List<Game>
-                    {
-                        new Game
-                         {
-                            Name = "Dark Souls",
-                            Description = "Collect souls, defeat enemys and become god",
-                            Price = 25.99,
-                            RealeaseDate = new DateTime(),
-                            Genre = "Soulslike"
+            //Classroom c1 = new Classroom { Name = "R305", Seates = 30, Teacher = t2 };
+            //Classroom c2 = new Classroom { Name = "B405", Seates = 55, Teacher = t1 };
 
-                         },
-                        new Game
-                        {
-                            Name = "Eldenring",
-                            Description = "Become Eldenlord",
-                            Price = 60.00,
-                            RealeaseDate = new DateTime(),
-                            Genre = "OpenWorld"
-                        },
+            //Course cu1 = new Course { Subject = "Ef-Core Basics", Duration = 120};
+            //Course cu2 = new Course { Subject = "Autotunning leicht gemacht", Duration = 180}; ;
 
-                        new Game
-                        {
-                            Name = "Bloodborn",
-                            Description = "Collect souls, defeat enemys and become god",
-                            Price =35.75,
-                            RealeaseDate = new DateTime(),
-                            Genre = "Soulslike"
-                        }
-                    }
-                },
+            //Student s1 = new Student { Name = "Jannik", LastName = "Weber", BirthDate = new DateTime(), Classroom = c1, Classyear = "7b" };
+            //Student s2 = new Student { Name = "Jassin", LastName = "Ahmed", BirthDate = new DateTime(), Classroom = c2, Classyear = "7a" };
+            //Student s3 = new Student { Name = "Selin", LastName = "Schreiner", BirthDate = new DateTime(), Classroom = c1, Classyear = "7b" };
+            //Student s4 = new Student { Name = "Hendrik", LastName = "Büchner", BirthDate = new DateTime(), Classroom = c2, Classyear = "7a" };
+            //Student s5 = new Student { Name = "Niklas", LastName = "Mosser", BirthDate = new DateTime(), Classroom = c1, Classyear = "7b" };
+            //Student s6 = new Student { Name = "Katrin", LastName = "Zisterer", BirthDate = new DateTime(), Classroom = c2, Classyear = "7a" };
 
-                new DeveloperStudio
-                {
-                    Name = "Stunlock Studios",
-                    DevelopedGames = new List<Game>
-                    {
-                        new Game
-                         {
-                            Name = "VRising",
-                            Description = "Become the strongest Vampire",
-                            Price = 20.00,
-                            RealeaseDate = new DateTime(),
-                            Genre = "OpenWorld"
-                         },
-                        new Game
-                        {
-                            Name = "Battlerite",
-                            Description = "Kompetetive 3 vs 3 Arena Multiplayer",
-                            Price = 0.00,
-                            RealeaseDate = new DateTime(),
-                            Genre = "Moba"
-                        }
+            //cu1.Students = new Student[] { s1, s3, s5 };
+            //cu2.Students = new Student[] { s2, s4, s6 };
 
-                    }
-                },
+            //db.Add(cu1);
+            //db.Add(cu2);
 
-
-                new DeveloperStudio
-                {
-                    Name = "Riot Games",
-                    DevelopedGames = new List<Game>
-                    {
-                        new Game
-                         {
-                            Name = "League Of Legends",
-                            Description = "Competetive Online Moba",
-                            Price = 20.00,
-                            RealeaseDate = new DateTime(),
-                            Genre = "Moba"
-                         },
-                        new Game
-                        {
-                            Name = "Legends Of Runterra",
-                            Description = "Kartgame in the League Of Legends Universe",
-                            Price = 0.00,
-                            RealeaseDate = new DateTime(),
-                            Genre = "CardGame"
-                        }
-
-                    }
-                },
-
-            };
-
-            return developers;
+            db.SaveChanges();
         }
     }
 }

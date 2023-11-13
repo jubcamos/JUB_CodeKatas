@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\CodeKata_01",
+    "\\CodeKata_01\\EfCoreBasics",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreBasics",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreBasics\\Domain",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreBasics\\Repository",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreResult",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreResult\\Data",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreResult\\Migrations",
+    "\\CodeKata_01\\EfCoreBasics\\EfCoreResult\\Models"
+  ],
+  "SelectedNode": "\\CodeKata_01\\EfCoreBasics\\EfCoreResult\\Models\\DeveloperStudioPublisher.cs",
+  "PreviewInSolutionExplorer": false
+}
