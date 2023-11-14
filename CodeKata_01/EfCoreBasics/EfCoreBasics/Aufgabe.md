@@ -94,7 +94,7 @@ Passe folgende Merkmale mit den Entitätseigenschaften an.
 		* Maximallänge 15
 		* Nicht null
 	* Birthdate
-		* Darf null sein 
+		* Darf nicht null sein 
 
 * Classroom-Klasse
 	* Seats
