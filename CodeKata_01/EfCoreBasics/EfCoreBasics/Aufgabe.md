@@ -177,4 +177,4 @@ Hier paar simple Querries, damit man so weiß wie man auf Daten in der Datenbank
 
 Füge jeder Entity die ShadowPropertie "CreatedDate" und "UpdatedDate" hinzu.
 
-Passe die Context-Klasse so an, dass auch automatisch bei jedem Hinzugügen oder Updaten einer Entity die Daten gesetzt werden.
+Passe die Context-Klasse so an, dass auch automatisch bei jedem Hinzufügen oder Updaten einer Entity die Daten mit dem aktuellen Zeitpunkt gesetzt werden.
