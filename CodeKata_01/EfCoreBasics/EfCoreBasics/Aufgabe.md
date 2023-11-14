@@ -1,5 +1,5 @@
 ﻿
-## Aufgaben
+# Aufgaben
 Das allgemeine Ziel bei diesen Code-Katas ist es die grundlegenden Ef-Core Funktionen zu zeigen. Hierbei wird der sogennante Code-First approache genutzt. 
 Mit diesem Approache ist es möglich Datenbanktabellen und Datenbanken aus dem Code zu konifugrieren und zu genererieren.
 Es gibt noch das Database-First Approache, welchen wir hier ignorieren werden.
@@ -77,7 +77,7 @@ Hier kann selbst ausgesucht werden welche der zwei Methoden man nutzt. Begründe
 
 Ich werde versuchen beide Ansätze zu zeigen.
 
-#### 2.1. Entitätseigenschaften
+### 2.1. Entitätseigenschaften
 Passe folgende Merkmale mit den Entitätseigenschaften an.
 
 * Student-Klasse
@@ -104,7 +104,7 @@ Passe folgende Merkmale mit den Entitätseigenschaften an.
 	* Name
 		* Soll unique sein
 
-#### 2.2. Relationen
+### 2.2. Relationen
 One-To-One, Many-To-Many, One-To-Many
 
 Wir haben bereits eine One-To-Many Relationship erfolgreich hinzugefügt. 
@@ -130,7 +130,7 @@ Ein **Classroom** hat einen oder keinen **Teacher**. Ein **Teacher** hält sein 
 Many-To-Many
 Ein **Student** hat mehrere **Courses**. Ein **Course** hat mehrere **Students**.
 	
-#### 2.3. ValueObjecte hinzufügen
+### 2.3. ValueObjecte hinzufügen
 
 Momentan haben wir es so, dass die Adresse aus multiplen Merkmale in der Klasse **Students* besteht.
 Wir wollen aber daraus ein ValueObject machen. 
